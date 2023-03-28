@@ -32,7 +32,8 @@ class MocapDataset(Dataset):
         img_bgr = self.img_bgr_list[img_idx]
         img_rgb = img_bgr[:, :, ::-1]
         img_h, img_w, _ = img_rgb.shape
-        focal_length = estimate_focal_length(img_h, img_w)
+        #focal_length = estimate_focal_length(img_h, img_w)
+        focal_length = 1410.73468716027
 
         bbox = self.detection_list[idx][1:5]
         norm_img, center, scale, crop_ul, crop_br, _ = process_image(img_rgb, bbox)

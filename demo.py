@@ -241,6 +241,7 @@ def main(args):
         img_w = batch["img_w"].to(device).float()
         focal_length = batch["focal_length"].to(device).float()
 
+
         cx, cy, b = center[:, 0], center[:, 1], scale * 200
         bbox_info = torch.stack([cx - img_w / 2., cy - img_h / 2., b], dim=-1)
         bbox_info[:, :2] = bbox_info[:, :2] / focal_length.unsqueeze(-1) * 2.8  # [-1, 1]
@@ -384,7 +385,7 @@ def main(args):
                  pose=smpl_pose, shape=smpl_betas, global_t=smpl_trans,
                  pred_joints=smpl_joints, focal_l=cam_focal_l,
                  detection_all=detection_all)
-
+'''
     print("--------------------------- Visualization ---------------------------")
     # make the output directory
     os.makedirs(front_view_dir, exist_ok=True)
@@ -455,7 +456,7 @@ def main(args):
             images_to_video(side_view_dir, video_path=side_view_dir + ".mp4", frame_rate=args.frame_rate)
         if args.show_bbox:
             images_to_video(bbox_dir, video_path=bbox_dir + ".mp4", frame_rate=args.frame_rate)
-
+'''
 
 if __name__ == '__main__':
     
